@@ -1,15 +1,20 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
+require("dotenv").config();
 
-const mongoURl = "mongodb://0.0.0.0:27017/INoteBook"
 
+const mongoURl =process.env.MONGO_URL
+  
 const connectToMongo = async () => {
-   await mongoose.connect(mongoURl)
-        .then(() => {
-            console.log("DB Connetion Successfull");
-        })
-        .catch((err) => {
-            console.log(err.message);
-        });
-}
+  await mongoose
+    .connect(mongoURl)
+    .then(() => {
+      console.log("DB Connetion Successfull");
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
 
 module.exports = connectToMongo;
+
+// GSVCwSh8iSZa2JAH
