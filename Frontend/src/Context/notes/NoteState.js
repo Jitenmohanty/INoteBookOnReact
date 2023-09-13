@@ -3,7 +3,7 @@ import NoteContext from "./notesContext";
 import { toast } from "react-hot-toast";
 
 const NoteState = ({ children }) => {
-  const host = "https://inotebookreact-7egp.onrender.com/";
+  const host = "https://inotebookreact-7egp.onrender.com";
   const notesInitial = [];
   const [notes, setNotes] = useState(notesInitial);
 
