@@ -3,7 +3,6 @@ import NoteContext from "../Context/notes/notesContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-hot-toast";
 
 const Notes = () => {
   const context = useContext(NoteContext);
@@ -43,7 +42,7 @@ const Notes = () => {
     else{
       navigate('/login')
     }
-  }, [getAllNotes]);
+  }, [getAllNotes,navigate]);
 
   return (
     <div>

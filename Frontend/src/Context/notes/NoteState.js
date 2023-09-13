@@ -55,6 +55,7 @@ const NoteState = ({ children }) => {
       },
       body: JSON.stringify({ id, title, description, tag }),
     });
+    console.log(response)
     const newNotes = JSON.parse(JSON.stringify(notes));
 
     for (let index = 0; index < newNotes.length; index++) {
