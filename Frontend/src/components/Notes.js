@@ -42,7 +42,7 @@ const Notes = () => {
     else{
       navigate('/login')
     }
-  }, [getAllNotes,navigate]);
+  }, [navigate]);
 
   return (
     <div>
