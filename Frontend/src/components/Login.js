@@ -4,12 +4,16 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [credential, setCredential] = useState({ email: "", password: "" });
+    const [loader, setLoader] = useState(false);
+
   const navigate = useNavigate();
   const onChange = (e) => {
     setCredential({ ...credential, [e.target.name]: e.target.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+        setLoader(true);
+
     const response = await fetch("https://inotebookreact-7egp.onrender.com/api/auth/login", {
       method: "POST",
       headers: {
@@ -23,18 +27,28 @@ const Login = () => {
     const json = await response.json();
     console.log(json);
     if (json.success) {
+          setLoader(false);
+
       // Save the auth token and redirect
       localStorage.setItem("token", json.authToken);
       navigate("/");
       toast.success("you Sucessfully LogIn to your account...");
     } else {
+          setLoader(false);
+
       toast.error("Invalid Credentials");
     }
   };
   return (
     <div className="container my-3">
       <h2>Login to continue to iNoteBook</h2>
-      <form onSubmit={handleSubmit} className="mt-3">
+  {
+    loader ? <div className="container mt-5 text-center">
+        <h2>Loading...</h2>
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>:<form onSubmit={handleSubmit} className="mt-3">
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             <h4>Email address</h4>
@@ -74,6 +88,8 @@ const Login = () => {
           Submit
         </button>
       </form>
+  }
+      
     </div>
   );
 };
