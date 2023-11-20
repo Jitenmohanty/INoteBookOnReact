@@ -12,8 +12,8 @@ const NoteItem = ({ note, updateNote }) => {
         <h4>No notes added yet</h4>
       ) : (
         <div
-          className="card my-3"
-          style={{ maxHeight: "15rem", maxWidth: "17rem" }}
+          className="card w-100 my-3"
+          // style={{ maxHeight: "15rem", maxWidth: "17rem" }}
         >
           <div
             className="card-body"
